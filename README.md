@@ -35,5 +35,10 @@ Each question has **two possible answers: True or False**.
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/quizzler.git
+   git clone https://github.com/SonDA-22011995/quizzler.git
    cd quizzler
+
+2. Install dependencies:
+    pip install requests==2.32.5
+3. Run the app:
+    python main.py
