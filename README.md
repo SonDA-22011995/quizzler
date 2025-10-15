@@ -39,6 +39,8 @@ Each question has **two possible answers: True or False**.
    cd quizzler
 
 2. Install dependencies:
+    ```bash
     pip install requests==2.32.5
 3. Run the app:
+    ```bash
     python main.py
