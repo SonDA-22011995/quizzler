@@ -1,12 +1,13 @@
 from tkinter import *
 from tkinter import ttk
+from quiz_brain import QuizBrain
 
 THEME_COLOR = "#375362"
 
 
 class QuizzInterface:
 
-    def __init__(self, window, quiz):
+    def __init__(self, window, quiz: QuizBrain):
         self.window = window
         self.quiz = quiz
         self.window.title("Quizzler")
@@ -86,10 +87,10 @@ class QuizzInterface:
             text = question
         )
 
-    def update_score(self, score):
+    def update_score(self, score: int):
         self.score.set(f"Score: {score}")
 
-    def next_question(self, answer):
+    def next_question(self, answer: str):
         if self.quiz.still_has_questions():
             self.quiz.check_answer(answer)
             self.update_canvas_text(self.quiz.next_question())
