@@ -7,7 +7,7 @@ THEME_COLOR = "#375362"
 
 class QuizzInterface:
 
-    def __init__(self, window, quiz: QuizBrain):
+    def __init__(self, window: Tk, quiz: QuizBrain):
         self.window = window
         self.quiz = quiz
         self.window.title("Quizzler")
@@ -92,8 +92,20 @@ class QuizzInterface:
 
     def next_question(self, answer: str):
         if self.quiz.still_has_questions():
-            self.quiz.check_answer(answer)
-            self.update_canvas_text(self.quiz.next_question())
-            self.update_score(getattr(self.quiz, "score"))
+            self.give_feedback(self.quiz.check_answer(answer))
         else:
             self.update_canvas_text(self.quiz.result())
+
+    def update_screen(self):
+        self.canvas.config(background="white")
+        self.update_canvas_text(self.quiz.next_question())
+        self.update_score(getattr(self.quiz, "score"))
+
+    def give_feedback(self, result: bool):
+        if result:
+            self.canvas.config(background="green")
+        else:
+            self.canvas.config(background="red")
+
+        self.window.after(3000, self.update_screen)
+
